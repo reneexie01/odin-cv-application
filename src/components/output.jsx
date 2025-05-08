@@ -1,10 +1,10 @@
 export { Outputs }
 
-function Outputs() {
-    const person = {firstName: "John", lastName:"Doe", school: "UNSW", experience:"Account manager"}
+function Outputs({ firstName, lastName }) {
+    const person = {lastName:"Doe", school: "UNSW", experience:"Account manager"}
     return (
         <>
-        <GeneralInformationOutputs firstName={person.firstName} lastName={person.lastName}/>
+        <GeneralInformationOutputs firstName={firstName} lastName={lastName}/>
         <br></br>
         <EducationOutputs school={person.school} />
         <br></br>
