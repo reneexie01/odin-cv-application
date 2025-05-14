@@ -1,16 +1,21 @@
 export { Inputs }
 
-function Inputs({ onChangeFirst, onChangeLast }) {
+function Inputs({ onChangeFirst, onChangeLast, onChangeEmail, onChangePhone }) {
     return (
         <>
-        <GeneralInformationInputs onChangeFirst={onChangeFirst} onChangeLast={onChangeLast}/>
+        <GeneralInformationInputs 
+            onChangeFirst={onChangeFirst} 
+            onChangeLast={onChangeLast} 
+            onChangeEmail={onChangeEmail}
+            onChangePhone={onChangePhone}
+        />
         <EducationInputs />
         <ExperienceInputs />
         </>
     )
 }
 
-function GeneralInformationInputs({ onChangeFirst, onChangeLast }) {
+function GeneralInformationInputs({ onChangeFirst, onChangeLast, onChangeEmail, onChangePhone }) {
     return (
         <>
         <h1>General Information: </h1>
@@ -28,11 +33,11 @@ function GeneralInformationInputs({ onChangeFirst, onChangeLast }) {
         </label>
         <label>
             Email: 
-            <input />
+            <input onChange={onChangeEmail}/>
         </label>
         <label>
             Phone number:
-            <input/>
+            <input onChange={onChangePhone}/>
         </label>
         </>
     )

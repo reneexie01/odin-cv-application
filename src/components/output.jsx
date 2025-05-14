@@ -1,38 +1,50 @@
 export { Outputs }
 
-function Outputs({ firstName, lastName }) {
-    const person = {lastName:"Doe", school: "UNSW", experience:"Account manager"}
+function Outputs({ generalInformation, educationInformation }) {
     return (
         <>
-        <GeneralInformationOutputs firstName={firstName} lastName={lastName}/>
+        <GeneralInformationOutputs firstName={generalInformation.firstName} lastName={generalInformation.lastName} email={generalInformation.email} phone={generalInformation.phone}/>
         <br></br>
-        <EducationOutputs school={person.school} />
+        <EducationOutputs education={educationInformation}/>
         <br></br>
-        <ExperienceOutputs experience={person.experience}/>
+        <ExperienceOutputs />
         </>
     )
 }
 
-function GeneralInformationOutputs({firstName, lastName}) {
+function GeneralInformationOutputs({firstName, lastName, email, phone}) {
     return (
         <>
-        Full Name: {firstName} {lastName}
+        <p>Full Name: {firstName} {lastName}</p>
+        <p>Email: {email}</p>
+        <p>Phone: {phone}</p>
         </>
     )
 }
 
-function EducationOutputs({school}) {
-    return (
-        <>
-        Education: {school}
-        </>
-    )
-}
+function EducationOutputs({ education }) {
+  return (
+    <>
+    <p>Education: </p>
+    <ul>
+        {
+        education.educationHistory.map((entry) => (
+        <li key={entry.id}>
+            {entry.qualification} ({entry.school})
+            <br></br>
+            {entry.startDate} - {entry.endDate}
+        </li>
+        ))   
+        }
+    </ul>
+    </>
+  );
+} // Need to fix this and figure out how to parse it through
 
 function ExperienceOutputs({experience}) {
     return (
         <>
-        Experience: {experience}
+        <p>Experience: {experience}</p>
         </>
     )
 }
