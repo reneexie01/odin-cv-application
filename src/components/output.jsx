@@ -28,8 +28,10 @@ function EducationOutputs({ education }) {
     <p>Education: </p>
     <ul>
         {
-        education.educationHistory.map((entry) => (
+        education.map((entry) => (
         <li key={entry.id}>
+            ID: {entry.id}
+            <br></br>
             {entry.qualification} ({entry.school})
             <br></br>
             {entry.startDate} - {entry.endDate}

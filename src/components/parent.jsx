@@ -1,6 +1,7 @@
 import { useState } from 'react'
 import { Inputs } from './input.jsx'
 import { Outputs } from './output.jsx'
+import { toolsManager } from './tools.jsx'
 
 export { Parent }
 
@@ -32,26 +33,53 @@ function Parent() {
         setPerson(newPerson)
     }
 
+    const addNewEducation = () => {
+        const newEntry = {
+                id: toolsManager(), 
+                school: 'University of Western Sydney',
+                qualification: 'Bachelors of Commerce',
+                startDate: 'May 2024',
+                endDate: 'December 2028'
+            }
+        const newEducation = [...education, newEntry]
+        setEducation(newEducation)
+    }
+
+    /*
     const educationHistory = [
     {
-        id: "a1", 
+        id: toolsManager(), 
         school: 'University of NSW',
         qualification: 'Bachelors of Arts',
         startDate: 'May 2020',
         endDate: 'December 2025'
     },
     {
-        id: "a2",
+        id: toolsManager(),
         school: 'University of Sydney',
         qualification: 'Bachelors of Exercise Science',
         startDate: 'March 2019',
         endDate: 'April 2023'
     }
     ];
+    */
 
-    const [education, setEducation] = useState({
-        educationHistory
-    })
+    const [education, setEducation] = useState([ 
+        {
+        id: toolsManager(), 
+        school: 'University of NSW',
+        qualification: 'Bachelors of Arts',
+        startDate: 'May 2020',
+        endDate: 'December 2025'
+        },
+        {
+        id: toolsManager(),
+        school: 'University of Sydney',
+        qualification: 'Bachelors of Exercise Science',
+        startDate: 'March 2019',
+        endDate: 'April 2023'
+        }
+    ])
 
     const [experience, setExperience] = useState({
             company: "",
@@ -68,6 +96,7 @@ function Parent() {
             onChangeLast={handleLastNameChange}
             onChangeEmail={handleEmailChange}
             onChangePhone={handlePhoneChange}
+            onClickEducation={addNewEducation}
         />
         <hr></hr>
         <Outputs 

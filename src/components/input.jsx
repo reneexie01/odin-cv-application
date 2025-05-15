@@ -1,6 +1,6 @@
 export { Inputs }
 
-function Inputs({ onChangeFirst, onChangeLast, onChangeEmail, onChangePhone }) {
+function Inputs({ onChangeFirst, onChangeLast, onChangeEmail, onChangePhone, onClickEducation }) {
     return (
         <>
         <GeneralInformationInputs 
@@ -9,7 +9,9 @@ function Inputs({ onChangeFirst, onChangeLast, onChangeEmail, onChangePhone }) {
             onChangeEmail={onChangeEmail}
             onChangePhone={onChangePhone}
         />
-        <EducationInputs />
+        <EducationInputs 
+            onClickEducation={onClickEducation}
+        />
         <ExperienceInputs />
         </>
     )
@@ -43,7 +45,7 @@ function GeneralInformationInputs({ onChangeFirst, onChangeLast, onChangeEmail, 
     )
 }
 
-function EducationInputs() {
+function EducationInputs({ onClickEducation }) {
     return (
         <>
         <h1>Education: </h1>
@@ -63,6 +65,7 @@ function EducationInputs() {
             End date: 
             <input type="date"/>
         </label>
+        <button onClick={onClickEducation}>Add</button>
         </>
     )
 }
