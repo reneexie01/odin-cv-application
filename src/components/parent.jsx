@@ -71,6 +71,17 @@ function Parent() {
             }
         const newEducation = [...education, newEntry]
         setEducation(newEducation)
+    } // TODO: Validate that everything has been filled in before accepting data
+
+    const removeEducation = (e) => {
+        const targetId = e.target.id;
+        console.log(targetId)
+        const educationCopy = [...education]
+        console.log(educationCopy)
+        const newEducation = educationCopy.filter((entry) => (
+            entry.id !== targetId
+        ))
+        setEducation(newEducation)
     }
 
     // Array of all the education inputs so far
@@ -79,15 +90,15 @@ function Parent() {
         id: toolsManager(), 
         school: 'University of NSW',
         qualification: 'Bachelors of Arts',
-        startDate: 'May 2020',
-        endDate: 'December 2025'
+        startDate: '2020-06-01',
+        endDate: '2025-12-31'
         },
         {
         id: toolsManager(),
         school: 'University of Sydney',
         qualification: 'Bachelors of Exercise Science',
-        startDate: 'March 2019',
-        endDate: 'April 2023'
+        startDate: '2019-03-31',
+        endDate: '2021-04-01'
         }
     ])
 
@@ -116,6 +127,7 @@ function Parent() {
         <Outputs 
             generalInformation={person}
             educationInformation={education}
+            onClickEducation={removeEducation}
         />
         </>
     )

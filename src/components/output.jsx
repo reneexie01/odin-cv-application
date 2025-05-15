@@ -1,11 +1,11 @@
 export { Outputs }
 
-function Outputs({ generalInformation, educationInformation }) {
+function Outputs({ generalInformation, educationInformation, onClickEducation }) {
     return (
         <>
         <GeneralInformationOutputs firstName={generalInformation.firstName} lastName={generalInformation.lastName} email={generalInformation.email} phone={generalInformation.phone}/>
         <br></br>
-        <EducationOutputs education={educationInformation}/>
+        <EducationOutputs education={educationInformation} onClickEducation={onClickEducation}/>
         <br></br>
         <ExperienceOutputs />
         </>
@@ -22,7 +22,7 @@ function GeneralInformationOutputs({firstName, lastName, email, phone}) {
     )
 }
 
-function EducationOutputs({ education }) {
+function EducationOutputs({ education, onClickEducation }) {
   return (
     <>
     <p>Education: </p>
@@ -32,16 +32,16 @@ function EducationOutputs({ education }) {
         <li key={entry.id}>
             ID: {entry.id}
             <br></br>
-            {entry.qualification} ({entry.school})
+            {entry.qualification} ({entry.school}) <button id={entry.id} onClick={onClickEducation}>Delete</button>
             <br></br>
-            {entry.startDate} - {entry.endDate}
+            {entry.startDate} to {entry.endDate}
         </li>
         ))   
         }
     </ul>
     </>
   );
-}
+} // TODO: Add delete function to remove item from array
 
 function ExperienceOutputs({experience}) {
     return (
