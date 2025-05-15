@@ -1,6 +1,9 @@
 export { Inputs }
 
-function Inputs({ onChangeFirst, onChangeLast, onChangeEmail, onChangePhone, onClickEducation }) {
+function Inputs({ 
+    onChangeFirst, onChangeLast, onChangeEmail, onChangePhone, 
+    onClickEducation, onChangeSchool, onChangeQualification, onChangeEducationStart, onChangeEducationEnd 
+}) {
     return (
         <>
         <GeneralInformationInputs 
@@ -10,7 +13,11 @@ function Inputs({ onChangeFirst, onChangeLast, onChangeEmail, onChangePhone, onC
             onChangePhone={onChangePhone}
         />
         <EducationInputs 
+            onChangeSchool={onChangeSchool}
             onClickEducation={onClickEducation}
+            onChangeQualification={onChangeQualification}
+            onChangeEducationStart={onChangeEducationStart}
+            onChangeEducationEnd={onChangeEducationEnd}
         />
         <ExperienceInputs />
         </>
@@ -45,25 +52,33 @@ function GeneralInformationInputs({ onChangeFirst, onChangeLast, onChangeEmail, 
     )
 }
 
-function EducationInputs({ onClickEducation }) {
+function EducationInputs({ onClickEducation, onChangeSchool, onChangeQualification, onChangeEducationStart, onChangeEducationEnd }) {
     return (
         <>
         <h1>Education: </h1>
         <label>
             School: 
-            <input/>
+            <input
+                onChange={onChangeSchool}
+            />
         </label>
         <label>
-            Course:
-            <input/>
+            Qualification:
+            <input 
+                onChange={onChangeQualification}
+            />
         </label>
         <label>
             Start date: 
-            <input type="date"/>
+            <input type="date" 
+                onChange={onChangeEducationStart}
+            />
         </label>
         <label>
             End date: 
-            <input type="date"/>
+            <input type="date"
+                onChange={onChangeEducationEnd}
+            />
         </label>
         <button onClick={onClickEducation}>Add</button>
         </>

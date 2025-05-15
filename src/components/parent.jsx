@@ -33,37 +33,47 @@ function Parent() {
         setPerson(newPerson)
     }
 
+    // New education inputs
+    const [newEducationEntry, setNewEducationEntry] = useState({
+        school: "",
+        qualification: "",
+        startDate: "",
+        endDate: ""
+    })
+
+    const handleSchoolChange = (e) => {
+        const newSchool = {...newEducationEntry, school: e.target.value};
+        setNewEducationEntry(newSchool)
+    }
+
+    const handleQualificationChange = (e) => {
+        const newQualification = {...newEducationEntry, qualification: e.target.value};
+        setNewEducationEntry(newQualification)
+    }
+
+    const handleEducationStartChange = (e) => {
+        const newQualification = {...newEducationEntry, startDate: e.target.value};
+        setNewEducationEntry(newQualification)
+    }
+
+    const handleEducationEndChange = (e) => {
+        const newQualification = {...newEducationEntry, endDate: e.target.value};
+        setNewEducationEntry(newQualification)
+    }
+
     const addNewEducation = () => {
         const newEntry = {
                 id: toolsManager(), 
-                school: 'University of Western Sydney',
-                qualification: 'Bachelors of Commerce',
-                startDate: 'May 2024',
-                endDate: 'December 2028'
+                school: newEducationEntry.school,
+                qualification: newEducationEntry.qualification,
+                startDate: newEducationEntry.startDate,
+                endDate: newEducationEntry.endDate
             }
         const newEducation = [...education, newEntry]
         setEducation(newEducation)
     }
 
-    /*
-    const educationHistory = [
-    {
-        id: toolsManager(), 
-        school: 'University of NSW',
-        qualification: 'Bachelors of Arts',
-        startDate: 'May 2020',
-        endDate: 'December 2025'
-    },
-    {
-        id: toolsManager(),
-        school: 'University of Sydney',
-        qualification: 'Bachelors of Exercise Science',
-        startDate: 'March 2019',
-        endDate: 'April 2023'
-    }
-    ];
-    */
-
+    // Array of all the education inputs so far
     const [education, setEducation] = useState([ 
         {
         id: toolsManager(), 
@@ -97,6 +107,10 @@ function Parent() {
             onChangeEmail={handleEmailChange}
             onChangePhone={handlePhoneChange}
             onClickEducation={addNewEducation}
+            onChangeSchool={handleSchoolChange}
+            onChangeQualification={handleQualificationChange}
+            onChangeEducationStart={handleEducationStartChange}
+            onChangeEducationEnd={handleEducationEndChange}
         />
         <hr></hr>
         <Outputs 

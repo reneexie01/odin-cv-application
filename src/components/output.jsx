@@ -41,7 +41,7 @@ function EducationOutputs({ education }) {
     </ul>
     </>
   );
-} // Need to fix this and figure out how to parse it through
+}
 
 function ExperienceOutputs({experience}) {
     return (
