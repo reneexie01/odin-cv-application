@@ -2,7 +2,8 @@ export { Inputs }
 
 function Inputs({ 
     onChangeFirst, onChangeLast, onChangeEmail, onChangePhone, 
-    onClickEducation, onChangeSchool, onChangeQualification, onChangeEducationStart, onChangeEducationEnd 
+    onClickEducation, onChangeSchool, onChangeQualification, onChangeEducationStart, onChangeEducationEnd,
+    onClickExperience, onChangeCompany, onChangePosition, onChangeResponsibility, onChangeExperienceStart, onChangeExperienceEnd
 }) {
     return (
         <>
@@ -13,13 +14,20 @@ function Inputs({
             onChangePhone={onChangePhone}
         />
         <EducationInputs 
-            onChangeSchool={onChangeSchool}
             onClickEducation={onClickEducation}
+            onChangeSchool={onChangeSchool}
             onChangeQualification={onChangeQualification}
             onChangeEducationStart={onChangeEducationStart}
             onChangeEducationEnd={onChangeEducationEnd}
         />
-        <ExperienceInputs />
+        <ExperienceInputs 
+            onClickExperience={onClickExperience}
+            onChangeCompany={onChangeCompany}
+            onChangePosition={onChangePosition}
+            onChangeResponsibility={onChangeResponsibility}
+            onChangeExperienceStart={onChangeExperienceStart}
+            onChangeExperienceEnd={onChangeExperienceEnd}
+        />
         </>
     )
 }
@@ -85,30 +93,41 @@ function EducationInputs({ onClickEducation, onChangeSchool, onChangeQualificati
     )
 }
 
-function ExperienceInputs() {
+function ExperienceInputs({ onClickExperience, onChangeCompany, onChangePosition, onChangeResponsibility, onChangeExperienceStart, onChangeExperienceEnd }) {
     return (
         <>
         <h1>Experience: </h1>
         <label>
             Company name:
-            <input/>
+            <input 
+                onChange={onChangeCompany}
+            />
         </label>
         <label>
             Position title:
-            <input/>
+            <input
+                onChange={onChangePosition}
+            />
         </label>
         <label>
             Main responsibilities: 
-            <input/>
+            <input
+                onChange={onChangeResponsibility}
+            />
         </label>
         <label>
             Start date:
-        <input type="date"/>
+            <input type="date"
+                onChange={onChangeExperienceStart}
+            />
         </label>
         <label>
             End date: 
-            <input type="date"/>
+            <input type="date"
+                onChange={onChangeExperienceEnd}
+            />
         </label>
+        <button onClick={onClickExperience}>Add</button>
         </>
     )
 }
