@@ -3,10 +3,12 @@ export { Inputs }
 function Inputs({ 
     onChangeFirst, onChangeLast, onChangeEmail, onChangePhone, 
     onClickEducation, onChangeSchool, onChangeQualification, onChangeEducationStart, onChangeEducationEnd,
-    onClickExperience, onChangeCompany, onChangePosition, onChangeResponsibility, onChangeExperienceStart, onChangeExperienceEnd
+    onClickExperience, onChangeCompany, onChangePosition, onChangeResponsibility, onChangeExperienceStart, onChangeExperienceEnd,
+    inputStatus, onClickInputStatus
 }) {
     return (
         <>
+        <div className={inputStatus}>
         <GeneralInformationInputs 
             onChangeFirst={onChangeFirst} 
             onChangeLast={onChangeLast} 
@@ -28,6 +30,9 @@ function Inputs({
             onChangeExperienceStart={onChangeExperienceStart}
             onChangeExperienceEnd={onChangeExperienceEnd}
         />
+        <br></br>
+        <button onClick={onClickInputStatus} className="submit">Submit</button>
+        </div>
         </>
     )
 }

@@ -7,10 +7,10 @@ export { Parent }
 
 function Parent() {
     const [person, setPerson] = useState({
-            firstName: "",
-            lastName: "",
-            email: "",
-            phone: ""
+            firstName: "John",
+            lastName: "Doe",
+            email: "john@example.com",
+            phone: "+61 400 000 000"
     })
 
     const handleFirstNameChange = (e) => {
@@ -150,9 +150,7 @@ function Parent() {
 
     const removeExperience = (e) => {
         const targetId = e.target.id;
-        console.log(targetId)
         const experienceCopy = [...experience]
-        console.log(experienceCopy)
         const newExperience = experienceCopy.filter((entry) => (
             entry.id !== targetId
         ))
@@ -179,8 +177,23 @@ function Parent() {
         }
     ])
 
+    // Submit button on the input section to hide input fields
+
+    const [inputStatus, setInputStatus] = useState('active')
+
+    const changeInputStatus = () => {
+        const newStatus = 'hidden';
+        setInputStatus(newStatus);
+    }
+
+    const editInputs = () => {
+        const newStatus = 'active';
+        setInputStatus(newStatus);
+    }
+
     return (
         <>
+        <div class="input">
         <Inputs 
             onChangeFirst={handleFirstNameChange}
             onChangeLast={handleLastNameChange}
@@ -199,15 +212,23 @@ function Parent() {
             onChangeResponsibility={handleResponsibilityChange}
             onChangeExperienceStart={handleExperienceStartDateChange}
             onChangeExperienceEnd={handleExperienceEndDateChange}
+
+            inputStatus={inputStatus}
+            onClickInputStatus={changeInputStatus}
         />
-        <hr></hr>
+        </div>
+        <div class="output">
         <Outputs 
             generalInformation={person}
             educationInformation={education}
             onClickEducation={removeEducation}
             experienceInformation={experience}
             onClickExperience={removeExperience}
+            onClickEditInputs={editInputs}
+            inputStatus={inputStatus}
         />
+        </div>
+        <button onClick={editInputs} className="edit">Edit</button>
         </>
     )
 }

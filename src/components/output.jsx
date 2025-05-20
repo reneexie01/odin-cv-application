@@ -1,13 +1,13 @@
 export { Outputs }
 
-function Outputs({ generalInformation, educationInformation, onClickEducation, experienceInformation, onClickExperience }) {
+function Outputs({ generalInformation, educationInformation, onClickEducation, experienceInformation, onClickExperience, inputStatus }) {
     return (
         <>
         <GeneralInformationOutputs firstName={generalInformation.firstName} lastName={generalInformation.lastName} email={generalInformation.email} phone={generalInformation.phone}/>
-        <br></br>
-        <EducationOutputs education={educationInformation} onClickEducation={onClickEducation}/>
-        <br></br>
-        <ExperienceOutputs experience={experienceInformation} onClickExperience={onClickExperience}/>
+        <hr />
+        <EducationOutputs education={educationInformation} onClickEducation={onClickEducation} inputStatus={inputStatus}/>
+        <hr />
+        <ExperienceOutputs experience={experienceInformation} onClickExperience={onClickExperience} inputStatus={inputStatus}/>
         </>
     )
 }
@@ -15,6 +15,7 @@ function Outputs({ generalInformation, educationInformation, onClickEducation, e
 function GeneralInformationOutputs({firstName, lastName, email, phone}) {
     return (
         <>
+        <p>General information: </p>
         <p>Full Name: {firstName} {lastName}</p>
         <p>Email: {email}</p>
         <p>Phone: {phone}</p>
@@ -22,7 +23,7 @@ function GeneralInformationOutputs({firstName, lastName, email, phone}) {
     )
 }
 
-function EducationOutputs({ education, onClickEducation }) {
+function EducationOutputs({ education, onClickEducation, inputStatus }) {
   return (
     <>
     <p>Education: </p>
@@ -32,7 +33,7 @@ function EducationOutputs({ education, onClickEducation }) {
         <li key={entry.id}>
             ID: {entry.id}
             <br></br>
-            {entry.qualification} ({entry.school}) <button id={entry.id} onClick={onClickEducation}>Delete</button>
+            {entry.qualification} ({entry.school}) <button id={entry.id} onClick={onClickEducation} className={inputStatus}>Delete</button>
             <br></br>
             {entry.startDate} to {entry.endDate}
         </li>
@@ -41,9 +42,9 @@ function EducationOutputs({ education, onClickEducation }) {
     </ul>
     </>
   );
-} // TODO: Add delete function to remove item from array
+} 
 
-function ExperienceOutputs({ experience, onClickExperience }) {
+function ExperienceOutputs({ experience, onClickExperience, inputStatus }) {
     return (
         <>
         <p>Experience: </p>
@@ -53,7 +54,7 @@ function ExperienceOutputs({ experience, onClickExperience }) {
             <li key={entry.id}>
                 ID: {entry.id}
                 <br></br>
-                {entry.position} ({entry.company}) <button id={entry.id} onClick={onClickExperience}>Delete</button>
+                {entry.position} ({entry.company}) <button id={entry.id} onClick={onClickExperience} className={inputStatus}>Delete</button>
                 <br></br>
                 {entry.responsibilities}
                 <br></br>
