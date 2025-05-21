@@ -82,3 +82,16 @@ button:focus-visible {
   width: 100%;
   margin: 10px;
 }
+
+span {
+  display: inline-block;
+  width: 40%;
+}
+
+input {
+  width: 40%;
+}
+
+.general-information > div, .education-information > div, .experience-information > div {
+  margin: 10px;
+}

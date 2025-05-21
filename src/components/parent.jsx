@@ -5,6 +5,8 @@ import { toolsManager } from './tools.jsx'
 
 export { Parent }
 
+// TODO: Put the functions into a parent function that returns functions ??
+
 function Parent() {
     const [person, setPerson] = useState({
             firstName: "John",
@@ -72,6 +74,8 @@ function Parent() {
         const newEducation = [...education, newEntry]
         setEducation(newEducation)
     } // TODO: Validate that everything has been filled in before accepting data
+
+    // TODO: Clear the entries in the inputs after submission is made
 
     const removeEducation = (e) => {
         const targetId = e.target.id;

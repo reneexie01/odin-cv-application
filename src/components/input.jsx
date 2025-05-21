@@ -40,27 +40,37 @@ function Inputs({
 function GeneralInformationInputs({ onChangeFirst, onChangeLast, onChangeEmail, onChangePhone }) {
     return (
         <>
-        <h1>General Information: </h1>
-        <label>
-            First name: 
-            <input 
-                onChange={onChangeFirst}
-            />
-        </label>
-        <label>
-            Last name:
-            <input 
-                onChange={onChangeLast}
-            />
-        </label>
-        <label>
-            Email: 
-            <input onChange={onChangeEmail}/>
-        </label>
-        <label>
-            Phone number:
-            <input onChange={onChangePhone}/>
-        </label>
+        <div class="general-information">
+            <h1>General Information: </h1>
+            <div>
+                <label>
+                <span>First name: </span>
+                <input 
+                    onChange={onChangeFirst}
+                />
+                </label>
+            </div>
+            <div>
+                <label>
+                <span>Last name: </span>
+                <input 
+                    onChange={onChangeLast}
+                />
+                </label>
+            </div>
+            <div>
+                <label>
+                <span>Email: </span>
+                <input onChange={onChangeEmail}/>
+                </label>
+            </div>
+            <div>
+                <label>
+                <span>Phone number: </span>
+                <input onChange={onChangePhone}/>
+                </label>
+            </div>
+        </div>
         </>
     )
 }
@@ -68,32 +78,42 @@ function GeneralInformationInputs({ onChangeFirst, onChangeLast, onChangeEmail, 
 function EducationInputs({ onClickEducation, onChangeSchool, onChangeQualification, onChangeEducationStart, onChangeEducationEnd }) {
     return (
         <>
-        <h1>Education: </h1>
-        <label>
-            School: 
-            <input
-                onChange={onChangeSchool}
-            />
-        </label>
-        <label>
-            Qualification:
-            <input 
-                onChange={onChangeQualification}
-            />
-        </label>
-        <label>
-            Start date: 
-            <input type="date" 
-                onChange={onChangeEducationStart}
-            />
-        </label>
-        <label>
-            End date: 
-            <input type="date"
-                onChange={onChangeEducationEnd}
-            />
-        </label>
-        <button onClick={onClickEducation}>Add</button>
+        <div class="education-information">
+            <h1>Education: </h1>
+            <div>
+                <label>
+                <span>School: </span>
+                <input
+                    onChange={onChangeSchool}
+                />
+                </label>
+            </div>
+            <div>
+                <label>
+                <span>Qualification:</span>
+                <input 
+                    onChange={onChangeQualification}
+                />
+                </label>
+            </div>
+            <div>
+                <label>
+                <span>Start date: </span>
+                <input type="date" 
+                    onChange={onChangeEducationStart}
+                />
+                </label>    
+            </div>
+            <div>
+                <label>
+                <span>End date: </span>
+                <input type="date"
+                    onChange={onChangeEducationEnd}
+                />
+                </label>
+            </div>
+            <button onClick={onClickEducation}>Add</button>
+        </div>
         </>
     )
 }
@@ -101,38 +121,50 @@ function EducationInputs({ onClickEducation, onChangeSchool, onChangeQualificati
 function ExperienceInputs({ onClickExperience, onChangeCompany, onChangePosition, onChangeResponsibility, onChangeExperienceStart, onChangeExperienceEnd }) {
     return (
         <>
-        <h1>Experience: </h1>
-        <label>
-            Company name:
-            <input 
-                onChange={onChangeCompany}
-            />
-        </label>
-        <label>
-            Position title:
-            <input
-                onChange={onChangePosition}
-            />
-        </label>
-        <label>
-            Main responsibilities: 
-            <input
-                onChange={onChangeResponsibility}
-            />
-        </label>
-        <label>
-            Start date:
-            <input type="date"
-                onChange={onChangeExperienceStart}
-            />
-        </label>
-        <label>
-            End date: 
-            <input type="date"
-                onChange={onChangeExperienceEnd}
-            />
-        </label>
-        <button onClick={onClickExperience}>Add</button>
+        <div class="experience-information">
+            <h1>Experience: </h1>
+            <div>
+                <label>
+                <span>Company name: </span>
+                <input 
+                    onChange={onChangeCompany}
+                />
+                </label>
+            </div>
+            <div>
+                <label>
+                <span>Position title: </span>
+                <input
+                    onChange={onChangePosition}
+                />
+                </label>
+            </div>
+            <div>
+                <label>
+                <span>Main responsibilities: </span>
+                <input
+                    onChange={onChangeResponsibility}
+                />
+                </label>
+            </div>
+            <div>
+                <label>
+                <span>Start date: </span>
+                <input type="date"
+                    onChange={onChangeExperienceStart}
+                />
+                </label>
+            </div>
+            <div>
+                <label>
+                <span>End date: </span>
+                <input type="date"
+                    onChange={onChangeExperienceEnd}
+                />
+                </label>
+            </div>
+            <button onClick={onClickExperience}>Add</button>
+        </div>
         </>
     )
 }
