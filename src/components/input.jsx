@@ -2,7 +2,7 @@ export { Inputs }
 
 function Inputs({ 
     onChangeFirst, onChangeLast, onChangeEmail, onChangePhone, 
-    onClickEducation, onChangeSchool, onChangeQualification, onChangeEducationStart, onChangeEducationEnd,
+    educationValidationCheck, onChangeSchool, onChangeQualification, onChangeEducationStart, onChangeEducationEnd, educationValidation,
     onClickExperience, onChangeCompany, onChangePosition, onChangeResponsibility, onChangeExperienceStart, onChangeExperienceEnd,
     inputStatus, onClickInputStatus
 }) {
@@ -16,11 +16,12 @@ function Inputs({
             onChangePhone={onChangePhone}
         />
         <EducationInputs 
-            onClickEducation={onClickEducation}
+            educationValidationCheck={educationValidationCheck}
             onChangeSchool={onChangeSchool}
             onChangeQualification={onChangeQualification}
             onChangeEducationStart={onChangeEducationStart}
             onChangeEducationEnd={onChangeEducationEnd}
+            educationValidation={educationValidation}
         />
         <ExperienceInputs 
             onClickExperience={onClickExperience}
@@ -40,7 +41,7 @@ function Inputs({
 function GeneralInformationInputs({ onChangeFirst, onChangeLast, onChangeEmail, onChangePhone }) {
     return (
         <>
-        <div class="general-information">
+        <div className="general-information">
             <h1>General Information: </h1>
             <div>
                 <label>
@@ -75,10 +76,10 @@ function GeneralInformationInputs({ onChangeFirst, onChangeLast, onChangeEmail, 
     )
 }
 
-function EducationInputs({ onClickEducation, onChangeSchool, onChangeQualification, onChangeEducationStart, onChangeEducationEnd }) {
+function EducationInputs({ educationValidationCheck, onChangeSchool, onChangeQualification, onChangeEducationStart, onChangeEducationEnd, educationValidation }) {
     return (
         <>
-        <div class="education-information">
+        <div className="education-information">
             <h1>Education: </h1>
             <div>
                 <label>
@@ -112,7 +113,8 @@ function EducationInputs({ onClickEducation, onChangeSchool, onChangeQualificati
                 />
                 </label>
             </div>
-            <button onClick={onClickEducation}>Add</button>
+            <div className="education-validation">{educationValidation}</div>
+            <button onClick={educationValidationCheck}>Add</button>
         </div>
         </>
     )
@@ -121,7 +123,7 @@ function EducationInputs({ onClickEducation, onChangeSchool, onChangeQualificati
 function ExperienceInputs({ onClickExperience, onChangeCompany, onChangePosition, onChangeResponsibility, onChangeExperienceStart, onChangeExperienceEnd }) {
     return (
         <>
-        <div class="experience-information">
+        <div className="experience-information">
             <h1>Experience: </h1>
             <div>
                 <label>

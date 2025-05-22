@@ -31,8 +31,6 @@ function EducationOutputs({ education, onClickEducation, inputStatus }) {
         {
         education.map((entry) => (
         <li key={entry.id}>
-            ID: {entry.id}
-            <br></br>
             {entry.qualification} ({entry.school}) <button id={entry.id} onClick={onClickEducation} className={inputStatus}>Delete</button>
             <br></br>
             {entry.startDate} to {entry.endDate}
@@ -52,8 +50,6 @@ function ExperienceOutputs({ experience, onClickExperience, inputStatus }) {
             {
             experience.map((entry) => (
             <li key={entry.id}>
-                ID: {entry.id}
-                <br></br>
                 {entry.position} ({entry.company}) <button id={entry.id} onClick={onClickExperience} className={inputStatus}>Delete</button>
                 <br></br>
                 {entry.responsibilities}

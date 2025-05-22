@@ -95,3 +95,7 @@ input {
 .general-information > div, .education-information > div, .experience-information > div {
   margin: 10px;
 }
+
+.education-validation {
+  color: red;
+}

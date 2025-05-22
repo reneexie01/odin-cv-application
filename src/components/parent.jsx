@@ -73,15 +73,44 @@ function Parent() {
             }
         const newEducation = [...education, newEntry]
         setEducation(newEducation)
-    } // TODO: Validate that everything has been filled in before accepting data
+    }
+
+    // Validates inputs before accepting submission for new education
+    const educationValidationCheck = () => {
+        let masterError = ""
+         if (newEducationEntry.school === "") {
+            const errorSchool = "School field is empty. ";
+            masterError = masterError + errorSchool;
+        } 
+        if (newEducationEntry.qualification === "") {
+            const errorQualifications = "Qualification field is empty. "
+            masterError = masterError + errorQualifications
+        }
+        if (newEducationEntry.startDate === "") {
+            const errorEducationStart = "Start date missing. "
+            masterError = masterError + errorEducationStart
+        }
+        if (newEducationEntry.endDate === "") {
+            const errorEducationEnd = "End date missing. "
+            masterError = masterError + errorEducationEnd
+        }
+        if (newEducationEntry.startDate > newEducationEntry.endDate) {
+            const errorEducationDates = "Start date is after end date. "
+            masterError = masterError + errorEducationDates
+        }
+        setEducationValidation(masterError)
+        if (masterError === "") {
+            addNewEducation();
+        }
+    }
+
+    const [educationValidation, setEducationValidation] = useState("")
 
     // TODO: Clear the entries in the inputs after submission is made
 
     const removeEducation = (e) => {
         const targetId = e.target.id;
-        console.log(targetId)
         const educationCopy = [...education]
-        console.log(educationCopy)
         const newEducation = educationCopy.filter((entry) => (
             entry.id !== targetId
         ))
@@ -197,18 +226,19 @@ function Parent() {
 
     return (
         <>
-        <div class="input">
+        <div className="input">
         <Inputs 
             onChangeFirst={handleFirstNameChange}
             onChangeLast={handleLastNameChange}
             onChangeEmail={handleEmailChange}
             onChangePhone={handlePhoneChange}
 
-            onClickEducation={addNewEducation}
+            educationValidationCheck={educationValidationCheck}
             onChangeSchool={handleSchoolChange}
             onChangeQualification={handleQualificationChange}
             onChangeEducationStart={handleEducationStartChange}
             onChangeEducationEnd={handleEducationEndChange}
+            educationValidation={educationValidation}
             
             onClickExperience={addNewExperience}
             onChangeCompany={handleCompanyChange}
@@ -221,7 +251,7 @@ function Parent() {
             onClickInputStatus={changeInputStatus}
         />
         </div>
-        <div class="output">
+        <div className="output">
         <Outputs 
             generalInformation={person}
             educationInformation={education}
