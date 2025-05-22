@@ -3,7 +3,7 @@ export { Inputs }
 function Inputs({ 
     onChangeFirst, onChangeLast, onChangeEmail, onChangePhone, 
     educationValidationCheck, onChangeSchool, onChangeQualification, onChangeEducationStart, onChangeEducationEnd, educationValidation,
-    onClickExperience, onChangeCompany, onChangePosition, onChangeResponsibility, onChangeExperienceStart, onChangeExperienceEnd,
+    experienceValidationCheck, onChangeCompany, onChangePosition, onChangeResponsibility, onChangeExperienceStart, onChangeExperienceEnd, experienceValidation,
     inputStatus, onClickInputStatus
 }) {
     return (
@@ -24,12 +24,13 @@ function Inputs({
             educationValidation={educationValidation}
         />
         <ExperienceInputs 
-            onClickExperience={onClickExperience}
+            experienceValidationCheck={experienceValidationCheck}
             onChangeCompany={onChangeCompany}
             onChangePosition={onChangePosition}
             onChangeResponsibility={onChangeResponsibility}
             onChangeExperienceStart={onChangeExperienceStart}
             onChangeExperienceEnd={onChangeExperienceEnd}
+            experienceValidation={experienceValidation}
         />
         <br></br>
         <button onClick={onClickInputStatus} className="submit">Submit</button>
@@ -120,7 +121,7 @@ function EducationInputs({ educationValidationCheck, onChangeSchool, onChangeQua
     )
 }
 
-function ExperienceInputs({ onClickExperience, onChangeCompany, onChangePosition, onChangeResponsibility, onChangeExperienceStart, onChangeExperienceEnd }) {
+function ExperienceInputs({ experienceValidationCheck, onChangeCompany, onChangePosition, onChangeResponsibility, onChangeExperienceStart, onChangeExperienceEnd, experienceValidation }) {
     return (
         <>
         <div className="experience-information">
@@ -165,7 +166,8 @@ function ExperienceInputs({ onClickExperience, onChangeCompany, onChangePosition
                 />
                 </label>
             </div>
-            <button onClick={onClickExperience}>Add</button>
+            <div className="experience-validation">{experienceValidation}</div>
+            <button onClick={experienceValidationCheck}>Add</button>
         </div>
         </>
     )

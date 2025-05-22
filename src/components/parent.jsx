@@ -80,23 +80,23 @@ function Parent() {
         let masterError = ""
          if (newEducationEntry.school === "") {
             const errorSchool = "School field is empty. ";
-            masterError = masterError + errorSchool;
+            masterError += errorSchool;
         } 
         if (newEducationEntry.qualification === "") {
             const errorQualifications = "Qualification field is empty. "
-            masterError = masterError + errorQualifications
+            masterError += errorQualifications
         }
         if (newEducationEntry.startDate === "") {
             const errorEducationStart = "Start date missing. "
-            masterError = masterError + errorEducationStart
+            masterError += errorEducationStart
         }
         if (newEducationEntry.endDate === "") {
             const errorEducationEnd = "End date missing. "
-            masterError = masterError + errorEducationEnd
+            masterError += errorEducationEnd
         }
         if (newEducationEntry.startDate > newEducationEntry.endDate) {
             const errorEducationDates = "Start date is after end date. "
-            masterError = masterError + errorEducationDates
+            masterError += errorEducationDates
         }
         setEducationValidation(masterError)
         if (masterError === "") {
@@ -135,7 +135,7 @@ function Parent() {
         }
     ])
 
-    const [newExperience, setNewExperience] = useState({
+    const [newExperienceEntry, setNewExperienceEntry] = useState({
         company: "",
         position: "",
         responsibilities: "",
@@ -144,42 +144,76 @@ function Parent() {
     })
 
     const handleCompanyChange = (e) => {
-        const updatedExperience = {...newExperience, company: e.target.value}
-        setNewExperience(updatedExperience)
+        const updatedExperience = {...newExperienceEntry, company: e.target.value}
+        setNewExperienceEntry(updatedExperience)
     }
 
     const handlePositionChange = (e) => {
-        const updatedExperience = {...newExperience, position: e.target.value}
-        setNewExperience(updatedExperience)
+        const updatedExperience = {...newExperienceEntry, position: e.target.value}
+        setNewExperienceEntry(updatedExperience)
     }
 
     const handleResponsibilityChange = (e) => {
-        const updatedExperience = {...newExperience, responsibilities: e.target.value}
-        setNewExperience(updatedExperience)
+        const updatedExperience = {...newExperienceEntry, responsibilities: e.target.value}
+        setNewExperienceEntry(updatedExperience)
     }
 
     const handleExperienceStartDateChange = (e) => {
-        const updatedExperience = {...newExperience, startDate: e.target.value}
-        setNewExperience(updatedExperience)
+        const updatedExperience = {...newExperienceEntry, startDate: e.target.value}
+        setNewExperienceEntry(updatedExperience)
     }
     
     const handleExperienceEndDateChange = (e) => {
-        const updatedExperience = {...newExperience, endDate: e.target.value}
-        setNewExperience(updatedExperience)
+        const updatedExperience = {...newExperienceEntry, endDate: e.target.value}
+        setNewExperienceEntry(updatedExperience)
     }
 
     const addNewExperience = () => {
         const newEntry = {
                 id: toolsManager(), 
-                company: newExperience.company,
-                position: newExperience.position,
-                responsibilities: newExperience.responsibilities,
-                startDate: newExperience.startDate,
-                endDate: newExperience.endDate
+                company: newExperienceEntry.company,
+                position: newExperienceEntry.position,
+                responsibilities: newExperienceEntry.responsibilities,
+                startDate: newExperienceEntry.startDate,
+                endDate: newExperienceEntry.endDate
             }
         const updatedExperience = [...experience, newEntry]
         setExperience(updatedExperience)
     } // TODO: Validate that everything has been filled in before accepting data
+
+    const experienceValidationCheck = () => {
+        let masterError = ""
+        if (newExperienceEntry.company === "") {
+            const errorCompany = "Company name field is empty. "
+            masterError += errorCompany;
+        }
+        if (newExperienceEntry.position === "") {
+            const errorPosition = "Position field is empty. "
+            masterError += errorPosition;
+        }
+        if (newExperienceEntry.responsibilities === "") {
+            const errorResponsibilities = "Responsibilities field is empty. "
+            masterError += errorResponsibilities;
+        }
+        if (newExperienceEntry.startDate === "") {
+            const errorExperienceStart = "Start date is missing. "
+            masterError += errorExperienceStart;
+        }
+        if (newExperienceEntry.endDate === "") {
+            const errorExperienceEnd = "End date is missing. "
+            masterError += errorExperienceEnd;
+        }
+        if (newExperienceEntry.startDate > newExperienceEntry.endDate) {
+            const errorExperienceDates = "Start date is after end date. "
+            masterError += errorExperienceDates;
+        }
+        setExperienceValidation(masterError)
+        if (masterError === "") {
+            addNewExperience()
+        }
+    }
+
+    const [experienceValidation, setExperienceValidation] = useState("")
 
     const removeExperience = (e) => {
         const targetId = e.target.id;
@@ -240,12 +274,13 @@ function Parent() {
             onChangeEducationEnd={handleEducationEndChange}
             educationValidation={educationValidation}
             
-            onClickExperience={addNewExperience}
+            experienceValidationCheck={experienceValidationCheck}
             onChangeCompany={handleCompanyChange}
             onChangePosition={handlePositionChange}
             onChangeResponsibility={handleResponsibilityChange}
             onChangeExperienceStart={handleExperienceStartDateChange}
             onChangeExperienceEnd={handleExperienceEndDateChange}
+            experienceValidation={experienceValidation}
 
             inputStatus={inputStatus}
             onClickInputStatus={changeInputStatus}

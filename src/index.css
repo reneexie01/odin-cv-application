@@ -96,6 +96,6 @@ input {
   margin: 10px;
 }
 
-.education-validation {
+.education-validation, .experience-validation {
   color: red;
 }
