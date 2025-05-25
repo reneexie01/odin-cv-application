@@ -2,8 +2,8 @@ export { Inputs }
 
 function Inputs({ 
     onChangeFirst, onChangeLast, onChangeEmail, onChangePhone, 
-    educationValidationCheck, onChangeSchool, onChangeQualification, onChangeEducationStart, onChangeEducationEnd, educationValidation,
-    experienceValidationCheck, onChangeCompany, onChangePosition, onChangeResponsibility, onChangeExperienceStart, onChangeExperienceEnd, experienceValidation,
+    educationValidationCheck, onChangeSchool, onChangeQualification, onChangeEducationStart, onChangeEducationEnd, educationValidation, newEducationEntry,
+    experienceValidationCheck, onChangeCompany, onChangePosition, onChangeResponsibility, onChangeExperienceStart, onChangeExperienceEnd, experienceValidation, newExperienceEntry, 
     inputStatus, onClickInputStatus
 }) {
     return (
@@ -22,6 +22,7 @@ function Inputs({
             onChangeEducationStart={onChangeEducationStart}
             onChangeEducationEnd={onChangeEducationEnd}
             educationValidation={educationValidation}
+            newEducationEntry={newEducationEntry}
         />
         <ExperienceInputs 
             experienceValidationCheck={experienceValidationCheck}
@@ -31,6 +32,7 @@ function Inputs({
             onChangeExperienceStart={onChangeExperienceStart}
             onChangeExperienceEnd={onChangeExperienceEnd}
             experienceValidation={experienceValidation}
+            newExperienceEntry={newExperienceEntry}
         />
         <br></br>
         <button onClick={onClickInputStatus} className="submit">Submit</button>
@@ -77,7 +79,7 @@ function GeneralInformationInputs({ onChangeFirst, onChangeLast, onChangeEmail, 
     )
 }
 
-function EducationInputs({ educationValidationCheck, onChangeSchool, onChangeQualification, onChangeEducationStart, onChangeEducationEnd, educationValidation }) {
+function EducationInputs({ educationValidationCheck, onChangeSchool, onChangeQualification, onChangeEducationStart, onChangeEducationEnd, educationValidation, newEducationEntry }) {
     return (
         <>
         <div className="education-information">
@@ -86,6 +88,7 @@ function EducationInputs({ educationValidationCheck, onChangeSchool, onChangeQua
                 <label>
                 <span>School: </span>
                 <input
+                    value={newEducationEntry.school}
                     onChange={onChangeSchool}
                 />
                 </label>
@@ -94,6 +97,7 @@ function EducationInputs({ educationValidationCheck, onChangeSchool, onChangeQua
                 <label>
                 <span>Qualification:</span>
                 <input 
+                    value={newEducationEntry.qualification}
                     onChange={onChangeQualification}
                 />
                 </label>
@@ -102,6 +106,7 @@ function EducationInputs({ educationValidationCheck, onChangeSchool, onChangeQua
                 <label>
                 <span>Start date: </span>
                 <input type="date" 
+                    value={newEducationEntry.startDate}
                     onChange={onChangeEducationStart}
                 />
                 </label>    
@@ -110,6 +115,7 @@ function EducationInputs({ educationValidationCheck, onChangeSchool, onChangeQua
                 <label>
                 <span>End date: </span>
                 <input type="date"
+                    value={newEducationEntry.endDate}
                     onChange={onChangeEducationEnd}
                 />
                 </label>
@@ -121,7 +127,7 @@ function EducationInputs({ educationValidationCheck, onChangeSchool, onChangeQua
     )
 }
 
-function ExperienceInputs({ experienceValidationCheck, onChangeCompany, onChangePosition, onChangeResponsibility, onChangeExperienceStart, onChangeExperienceEnd, experienceValidation }) {
+function ExperienceInputs({ experienceValidationCheck, onChangeCompany, onChangePosition, onChangeResponsibility, onChangeExperienceStart, onChangeExperienceEnd, experienceValidation, newExperienceEntry }) {
     return (
         <>
         <div className="experience-information">
@@ -130,6 +136,7 @@ function ExperienceInputs({ experienceValidationCheck, onChangeCompany, onChange
                 <label>
                 <span>Company name: </span>
                 <input 
+                    value={newExperienceEntry.company}
                     onChange={onChangeCompany}
                 />
                 </label>
@@ -138,6 +145,7 @@ function ExperienceInputs({ experienceValidationCheck, onChangeCompany, onChange
                 <label>
                 <span>Position title: </span>
                 <input
+                    value={newExperienceEntry.position}
                     onChange={onChangePosition}
                 />
                 </label>
@@ -146,6 +154,7 @@ function ExperienceInputs({ experienceValidationCheck, onChangeCompany, onChange
                 <label>
                 <span>Main responsibilities: </span>
                 <input
+                    value={newExperienceEntry.responsibilities}
                     onChange={onChangeResponsibility}
                 />
                 </label>
@@ -154,6 +163,7 @@ function ExperienceInputs({ experienceValidationCheck, onChangeCompany, onChange
                 <label>
                 <span>Start date: </span>
                 <input type="date"
+                    value={newExperienceEntry.startDate}
                     onChange={onChangeExperienceStart}
                 />
                 </label>
@@ -162,6 +172,7 @@ function ExperienceInputs({ experienceValidationCheck, onChangeCompany, onChange
                 <label>
                 <span>End date: </span>
                 <input type="date"
+                    value={newExperienceEntry.endDate}
                     onChange={onChangeExperienceEnd}
                 />
                 </label>

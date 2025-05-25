@@ -77,6 +77,13 @@ function Parent() {
 
     // Validates inputs before accepting submission for new education
     const educationValidationCheck = () => {
+        const resetFields = {
+            school: "",
+            qualification: "",
+            startDate: "",
+            endDate: ""
+        }
+
         let masterError = ""
          if (newEducationEntry.school === "") {
             const errorSchool = "School field is empty. ";
@@ -101,6 +108,7 @@ function Parent() {
         setEducationValidation(masterError)
         if (masterError === "") {
             addNewEducation();
+        setNewEducationEntry(resetFields)
         }
     }
 
@@ -179,9 +187,16 @@ function Parent() {
             }
         const updatedExperience = [...experience, newEntry]
         setExperience(updatedExperience)
-    } // TODO: Validate that everything has been filled in before accepting data
+    } 
 
     const experienceValidationCheck = () => {
+        const resetFields = {
+            company: "",
+            position: "",
+            responsibilities: "",
+            startDate: "",
+            endDate: ""
+        }
         let masterError = ""
         if (newExperienceEntry.company === "") {
             const errorCompany = "Company name field is empty. "
@@ -210,6 +225,7 @@ function Parent() {
         setExperienceValidation(masterError)
         if (masterError === "") {
             addNewExperience()
+            setNewExperienceEntry(resetFields)
         }
     }
 
@@ -273,6 +289,7 @@ function Parent() {
             onChangeEducationStart={handleEducationStartChange}
             onChangeEducationEnd={handleEducationEndChange}
             educationValidation={educationValidation}
+            newEducationEntry={newEducationEntry}
             
             experienceValidationCheck={experienceValidationCheck}
             onChangeCompany={handleCompanyChange}
@@ -281,6 +298,7 @@ function Parent() {
             onChangeExperienceStart={handleExperienceStartDateChange}
             onChangeExperienceEnd={handleExperienceEndDateChange}
             experienceValidation={experienceValidation}
+            newExperienceEntry={newExperienceEntry}
 
             inputStatus={inputStatus}
             onClickInputStatus={changeInputStatus}
